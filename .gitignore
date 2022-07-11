@@ -22,3 +22,15 @@ Thumbs.db
 #####################
 /.vscode
 /.vs
+
+CMakeFiles
+cmake_install.cmake
+CMakeCache.txt
+CTestTestfile.cmake
+DartConfiguration.tcl
+libsharpSAT.a
+Makefile
+sharpSAT
+sharpSAT-Targets.cmake
+sharpSATConfig.cmake
+sharpSATConfigVersion.cmake
