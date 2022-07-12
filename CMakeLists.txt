@@ -70,10 +70,8 @@ target_include_directories(libsharpSAT
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
-if (NOT WIN32)
-    find_library(GMP_LIB gmp)
-    find_library(GMPXX_LIB gmpxx)
-endif()
+find_library(GMP_LIB gmp)
+find_library(GMPXX_LIB gmpxx)
 
 target_link_libraries(libsharpSAT PUBLIC ${GMP_LIB} ${GMPXX_LIB})
 

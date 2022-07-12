@@ -47,7 +47,7 @@ uint64_t freeram() {
 } // sharpSAT namespace
 
 
-#elif _MSC_VER
+#else
 
 #include <windows.h>
 
@@ -57,11 +57,6 @@ uint64_t freeram() {
     GlobalMemoryStatusEx(&state);
     return state.ullAvailPhys;
 }
-
-
-#else
-// ToDo: Provide something like freeram
-#error "freeram function not provided for this platform"
 
 #endif
 
