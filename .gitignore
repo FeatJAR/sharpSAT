@@ -35,3 +35,9 @@ sharpSAT.exe
 sharpSAT-Targets.cmake
 sharpSATConfig.cmake
 sharpSATConfigVersion.cmake
+
+*.vcxproj*
+Debug/
+libsharpSAT.*
+x64/
+*.sln

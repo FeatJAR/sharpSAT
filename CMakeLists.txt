@@ -1,6 +1,10 @@
 cmake_minimum_required (VERSION 3.5)
 project (sharpSAT VERSION 1.2 LANGUAGES CXX)
 
+set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
+set(BUILD_SHARED_LIBS OFF)
+set(CMAKE_EXE_LINKER_FLAGS "-static")
+
 option(SHARPSAT_BUILD_TESTING "Build and run sharpSAT's tests" ON)
 
 include(GNUInstallDirs)
@@ -70,8 +74,10 @@ target_include_directories(libsharpSAT
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
-find_library(GMP_LIB gmp)
-find_library(GMPXX_LIB gmpxx)
+if (NOT WIN32)
+    find_library(GMP_LIB gmp)
+    find_library(GMPXX_LIB gmpxx)
+endif()
 
 target_link_libraries(libsharpSAT PUBLIC ${GMP_LIB} ${GMPXX_LIB})
 
@@ -80,7 +86,7 @@ target_link_libraries(libsharpSAT PUBLIC ${GMP_LIB} ${GMPXX_LIB})
 # CMake at all. Thus we have to hack something together for now.
 if (WIN32)
     target_include_directories(libsharpSAT PUBLIC "${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/include/")
-    target_link_libraries(libsharpSAT PUBLIC "${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib/mpir.lib")
+    target_link_libraries(libsharpSAT PUBLIC "${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/lib/gmp.lib")
 endif()
 # The current code is a mess and abuses MSVC iterators in an invalid way
 
