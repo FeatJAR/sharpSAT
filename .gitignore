@@ -38,6 +38,9 @@ sharpSATConfigVersion.cmake
 
 *.vcxproj*
 Debug/
+Release/
 libsharpSAT.*
+sharpSAT.*
 x64/
 *.sln
+*.tlog

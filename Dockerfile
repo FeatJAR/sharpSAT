@@ -5,5 +5,5 @@ RUN apt-get update && apt-get install -y \
     libgmp-dev
 COPY . /home
 WORKDIR /home
-RUN cmake .
+RUN cmake . -D CMAKE_BUILD_TYPE=Release
 RUN make
